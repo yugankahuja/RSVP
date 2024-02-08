@@ -1,0 +1,28 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#wordContainer {
+    font-size: 36px;
+    margin: 20px;
+}
+
+#inputText {
+    width: 60%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+#startButton, #speedRange {
+    margin: 10px;
+}
