@@ -2,8 +2,8 @@ document.getElementById('startButton').addEventListener('click', toggleReading);
 const restartButton = document.createElement('button');
 restartButton.textContent = 'Restart';
 restartButton.id = 'restartButton';
-restartButton.style.display = 'none'; // Hide restart button initially
-document.getElementById('app').appendChild(restartButton); // Add restart button to the app
+restartButton.style.display = 'none';
+document.getElementById('app').appendChild(restartButton); 
 restartButton.addEventListener('click', restartReading);
 
 const leftArrow = document.getElementById('leftArrow');
@@ -35,11 +35,11 @@ function updateSpeed() {
         clearInterval(interval);
         interval = setInterval(() => {
             if (index < words.length - 1) {
-                index++; // Move to the next word
+                index++; 
                 displayNextWord();
             } else {
-                displayNextWord(); // Display the last word
-                stopReading(true); // Optionally stop if at the end
+                displayNextWord(); 
+                stopReading(true); 
             }
         }, 60000 / parseInt(document.getElementById('speedRange').value));
     }
@@ -59,16 +59,15 @@ function startReading() {
         rightArrow.style.display = 'none';
         restartButton.style.display = 'none';
 
-        displayNextWord(); // Display the first word immediately
+        displayNextWord(); 
 
-        // Start the interval with the next word
         interval = setInterval(() => {
             if (index < words.length - 1) {
-                index++; // Prepare to display the next word
+                index++; 
                 displayNextWord();
             } else {
-                clearInterval(interval); // Clear the interval at the end of the text
-                stopReading(true); // Optionally handle the end of reading
+                clearInterval(interval); 
+                stopReading(true); 
             }
         }, 60000 / parseInt(document.getElementById('speedRange').value));
     }
@@ -82,7 +81,7 @@ function stopReading(endOfText = false) {
     document.getElementById('startButton').textContent = 'Start Reading';
     leftArrow.style.display = 'inline';
     rightArrow.style.display = 'inline';
-    restartButton.style.display = 'inline'; // Show restart button when reading is stopped
+    restartButton.style.display = 'inline'; 
     if (endOfText) {
         index = 0;
     }
@@ -93,15 +92,15 @@ function toggleReading() {
         stopReading();
     } else {
         if (words.length === 0 || index >= words.length) {
-            loadWords(); // Load words if not yet loaded or if at the end
+            loadWords();
         }
         startReading();
     }
 }
 
 function restartReading() {
-    loadWords(); // Reload the words from the input text
-    index = 0; // Reset index to start from the beginning
+    loadWords(); 
+    index = 0; 
     startReading();
 }
 
@@ -116,7 +115,6 @@ function changeWord(direction) {
 
 
 
-// Listen for arrow key presses to navigate words
 document.addEventListener('keydown', function(event) {
     if (event.key === 'ArrowLeft') {
         changeWord(-1);
