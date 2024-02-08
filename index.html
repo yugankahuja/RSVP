@@ -4,15 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSVP Reader</title>
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="./logo.png"> 
 </head>
 <body>
+    <header>
+        <a href="/" class="logo">
+            <img src="./RSVP.png" alt="Logo" height="60"> 
+        </a>
+    </header>
     <div id="app">
         <textarea id="inputText" placeholder="Paste text here..."></textarea>
         <button id="startButton">Start Reading</button>
-        <button id="leftArrow" style="display:none;">&#8592;</button>
-        <div id="wordContainer"></div>
-        <button id="rightArrow" style="display:none;">&#8594;</button>
+        <div class="container">
+            <button id="leftArrow">&#8592;</button>
+            <div id="wordContainer"></div>
+            <button id="rightArrow">&#8594;</button>
+        </div>
         <label for="speedRange">Speed: <span id="speedValue">300</span> WPM</label>
         <input type="range" id="speedRange" min="100" max="1000" value="300">
     </div>

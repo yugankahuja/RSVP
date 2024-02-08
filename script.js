@@ -47,18 +47,41 @@ function updateSpeed() {
 
 
 
+document.getElementById('speedRange').addEventListener('input', function() {
+    const speedValue = document.getElementById('speedValue'); 
+    speedValue.textContent = this.value;
 
-document.getElementById('speedRange').addEventListener('input', updateSpeed);
+    if (reading) {
+        clearInterval(interval);
+        const newSpeed = 60000 / parseInt(this.value);
+        interval = setInterval(() => {
+            if (index < words.length - 1) {
+                index++;
+                displayNextWord();
+            } else {
+                clearInterval(interval); 
+            }
+        }, newSpeed);
+    }
+});
 
 
+
+// function startReading() {
+//     if (!reading && words.length > 0) {
+//         reading = true;
+//         document.getElementById('startButton').textContent = 'Stop Reading';
+//         leftArrow.style.display = 'none';
+//         rightArrow.style.display = 'none';
+//         restartButton.style.display = 'none';
 function startReading() {
     if (!reading && words.length > 0) {
         reading = true;
         document.getElementById('startButton').textContent = 'Stop Reading';
-        leftArrow.style.display = 'none';
-        rightArrow.style.display = 'none';
-        restartButton.style.display = 'none';
-
+        document.getElementById('leftArrow').style.display = 'none'; 
+        document.getElementById('rightArrow').style.display = 'none'; 
+        document.getElementById('restartButton').style.display = 'none'; 
+    
         displayNextWord(); 
 
         interval = setInterval(() => {
@@ -75,13 +98,15 @@ function startReading() {
 
 
 
+
 function stopReading(endOfText = false) {
     clearInterval(interval);
     reading = false;
     document.getElementById('startButton').textContent = 'Start Reading';
-    leftArrow.style.display = 'inline';
-    rightArrow.style.display = 'inline';
-    restartButton.style.display = 'inline'; 
+    document.getElementById('leftArrow').style.display = 'inline'; 
+    document.getElementById('rightArrow').style.display = 'inline'; 
+    document.getElementById('restartButton').style.display = 'inline'; 
+   
     if (endOfText) {
         index = 0;
     }
